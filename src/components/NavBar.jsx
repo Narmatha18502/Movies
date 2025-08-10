@@ -5,7 +5,7 @@ import { Clapperboard } from 'lucide-react';
 
 export const NavBar = () => {
   return (
-    <div className='flex border space-x-8 items-center pl-3 py-4 bg-violet-100/50'>
+    <div className='sticky top-0 bg-violet-100/50 backdrop-blur-sm border flex space-x-8 items-center px-3 py-4 z-50 box-border'>
         {/* <img className='w-[50px] rounded-full border-4 border-gray-500/50' src={Clapperboard} alt="" /> */}
         <Clapperboard className="w-9 h-9 animate-pulse" />
 

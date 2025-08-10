@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import WatchListPage from "./components/WatchList";
 import Movies from "./components/Movies";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import Banner from "./components/Banner";
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
   }, []);
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <NavBar />
         <Routes>
           <Route
@@ -60,7 +60,7 @@ function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 }

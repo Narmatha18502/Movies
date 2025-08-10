@@ -1,0 +1,13 @@
+/* index.css */
+
+/* Global box-sizing reset */
+*, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+  
+  /* Reset default margin and padding */
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  

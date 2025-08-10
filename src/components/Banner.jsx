@@ -10,7 +10,7 @@ function Banner({ movie }) {
 
   return (
     <div
-      className="h-[90vh]  bg-cover bg-center bg-contain flex items-end"
+      className=" h-[90vh]  bg-cover bg-center bg-contain flex items-end box-border"
       style={{
         backgroundImage: `url(${imageUrl})`,
       }}
