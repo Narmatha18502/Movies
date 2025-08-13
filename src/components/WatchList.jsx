@@ -32,10 +32,9 @@ function WatchListPage({ Watchlist,handleRemoveFromWatchlist ,setWatchList}) {
   
     Watchlist.forEach((movieObj) => {
       if (movieObj.genre_ids.length === 1) {
-        // Movie has only one genre — include it
         genreSet.add(genreids[movieObj.genre_ids[0]]);
       } else if (movieObj.genre_ids.length > 1) {
-        // Movie has multiple genres — include only the first
+        
         genreSet.add(genreids[movieObj.genre_ids[0]]);
       }
     });
