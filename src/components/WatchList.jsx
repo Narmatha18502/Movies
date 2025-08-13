@@ -26,13 +26,24 @@ function WatchListPage({ Watchlist,handleRemoveFromWatchlist ,setWatchList}) {
     });
     setWatchList([...sortedDecreasing]);
   };
+ 
   useEffect(() => {
-    let temp = Watchlist.map((movieObj) => {
-      return genreids[movieObj.genre_ids[0]];
+    const genreSet = new Set();
+  
+    Watchlist.forEach((movieObj) => {
+      if (movieObj.genre_ids.length === 1) {
+        // Movie has only one genre — include it
+        genreSet.add(genreids[movieObj.genre_ids[0]]);
+      } else if (movieObj.genre_ids.length > 1) {
+        // Movie has multiple genres — include only the first
+        genreSet.add(genreids[movieObj.genre_ids[0]]);
+      }
     });
-    temp = new Set(temp)
-    setGenreList(["All Genres", ...temp]);
+  
+    setGenreList(["All Genres", ...Array.from(genreSet)]);
   }, [Watchlist]);
+  
+  
 
   return (
     <>
@@ -87,6 +98,7 @@ function WatchListPage({ Watchlist,handleRemoveFromWatchlist ,setWatchList}) {
                 }
                 else{
                   return genreids[movieObj.genre_ids[0]]==currGenre;
+
                 }
             }).filter((movieObj) => {
               return movieObj.title
