@@ -27,21 +27,14 @@ function WatchListPage({ Watchlist,handleRemoveFromWatchlist ,setWatchList}) {
     setWatchList([...sortedDecreasing]);
   };
  
-  useEffect(() => {
-    const genreSet = new Set();
-  
-    Watchlist.forEach((movieObj) => {
-      if (movieObj.genre_ids.length === 1) {
-        genreSet.add(genreids[movieObj.genre_ids[0]]);
-      } else if (movieObj.genre_ids.length > 1) {
-        
-        genreSet.add(genreids[movieObj.genre_ids[0]]);
-      }
-    });
-  
-    setGenreList(["All Genres", ...Array.from(genreSet)]);
-  }, [Watchlist]);
-  
+  useEffect(()=>{
+    let temp = Watchlist.map((movieObj)=>{
+      return genreids[movieObj.genre_ids[0]]
+    })
+    temp = new Set(temp);
+    setGenreList(["All Genres", ...temp])
+    console.log(temp);
+  },[Watchlist])
   
 
   return (
@@ -53,7 +46,7 @@ function WatchListPage({ Watchlist,handleRemoveFromWatchlist ,setWatchList}) {
               onClick={() => handleFilter(genre)}
               className={
                 currGenre == genre
-                  ? "flex justify-center items-center bg-violet-300 h-[3rem] w-[9rem] rounded-xl text-white-900 font-bold mx-4 my-4"
+                  ? "flex justify-center items-center bg-violet-300 h-[3rem] w-[9rem] rounded-xl text-white font-bold mx-4 my-4"
                   : "flex justify-center items-center bg-gray-200 h-[3rem] w-[9rem] rounded-xl text-white font-bold mx-4 my-4"
               }
             >
